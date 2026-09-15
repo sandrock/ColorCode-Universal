@@ -196,21 +196,21 @@ namespace ColorCode.Compilation.Languages
                             }),
 
                     new LanguageRule(
-                        @"(?s)'(?:[^\t\n\\']+|(" + escape + @")|\\)*'",
+                        @"(?s)'[^\t\n\\']*(?:(?:(" + escape + @")|\\)[^\t\n\\']*)*'",
                         new Dictionary<int, string>
                             {
                                 { 0, ScopeName.String },
                                 { 1, ScopeName.StringEscape },
                             }),
                     new LanguageRule(
-                        @"(?s)@""(?:("""")|[^""]+)*""(?!"")",
+                        @"(?s)@""[^""]*(?:("""")[^""]*)*""(?!"")",
                         new Dictionary<int, string>
                             {
                                 { 0, ScopeName.StringCSharpVerbatim },
                                 { 1, ScopeName.StringEscape }
                             }),
                     new LanguageRule(
-                                @"(?s)""(?:[^\t\n\\""]+|(" + escape + @")|\\)*""",
+                                @"(?s)""[^\t\n\\""]*(?:(?:(" + escape + @")|\\)[^\t\n\\""]*)*""",
                                 new Dictionary<int, string>
                                     {
                                         { 0, ScopeName.String },
